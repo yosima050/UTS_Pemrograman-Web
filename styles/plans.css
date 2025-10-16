@@ -1,0 +1,204 @@
+:root {
+    --bg-dark: #0D1F22;
+    --accent-primary: #C3F73A;
+    --accent-secondary: #95E06C;
+    --text-light: #68B684;
+    --text-dark: #0D1F22;
+    --subtle-foreground: #587792;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.container {
+    width: 95%;
+    max-width: 1650px;
+    margin: 0 auto;
+}
+
+.main-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background: var(--bg-dark);
+    padding: 1rem 0;
+}
+
+.nav-bar {
+    display: flex;
+    gap: 30px; 
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent-secondary);
+}
+
+.upload-icon-img {
+    width: 18px;
+    height: 18px;
+}
+
+
+.cta-button.submit-btn {
+    background-color: var(--accent-primary);
+    color: var(--bg-dark) !important;
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cta-button.submit-btn:hover {
+    background-color: var(--accent-secondary);
+}
+
+.main-footer {
+    background-color: var(--bg-dark);
+    color: #fff;
+    text-align: center;
+}
+
+.main-footer p {
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
+
+.pricing-cards {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin: 32px 0;
+    flex-wrap: wrap;
+}
+
+.pricing-section {
+    background: #fff;
+    color: #222;
+    padding: 60px 0 40px 0;
+    margin: 0 auto;
+}
+
+.pricing-title {
+    color: var(--text-dark);
+    text-align: center;
+    line-height: 1.2; 
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-top: 60px;
+}
+
+.pricing-card {
+    background: #fff;
+    color: #222;
+    border-radius: 18px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    padding: 32px 28px 24px 28px;
+    width: 320px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pricing-badge {
+    color: var(--text-dark);
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+.pricing-main .old-price {
+    color: #bdbdbd;
+    font-size: 1.2rem;
+    text-decoration: line-through;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.pricing-main .new-price {
+    color: #222;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.pricing-main .currency,
+.pricing-main .per-month {
+    color: #222;
+    font-size: 1rem;
+    margin-left: 2px;
+}
+
+.pricing-features {
+    color: #222;
+    padding: 0;
+    list-style: disc inside;
+    width: 100%;
+    text-align: left;
+}
+
+.get-btn {
+    background: var(--accent-primary);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 7px;
+    padding: 12px 0;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 18px 0 10px 0;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.get-btn:hover {
+    background-color: var(--bg-dark);
+    color: #fff !important;
+}
+
+@media (max-width: 1100px) {
+    .pricing-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    .pricing-card {
+        margin-bottom: 24px;
+    }
+}

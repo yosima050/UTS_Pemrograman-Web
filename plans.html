@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoStock - Modern Images</title>
+    <link rel="stylesheet" href="styles/plans.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+   <header class="main-header">
+    <nav class="container nav-bar">
+        <a href="index.html" class="logo">PhotoStock</a>
+
+        <div class="nav-links">
+            <a href="#">Join PhotoStock+</a>
+            <a href="#" onclick="event.preventDefault(); alert('Log in is unavailable at the moment.');">Log in</a>
+            <a href="contact.html" class="cta-button submit-btn">
+            <img src="assets/upload.png" alt="Upload" class="upload-icon-img">
+            Upload
+            </a>
+        </div>
+    </nav>
+</header>
+
+    <section class="pricing-section">
+    <div class="container">
+        <h2 class="pricing-title">
+            One simple plan unlocks everything.<br>
+            No bundles. No add-ons.
+        </h2>
+        <div class="pricing-cards">
+            <div class="pricing-card">
+                <div class="pricing-badge">Free</div>
+                <div class="pricing-main">
+                    <span class="new-price">$0</span>
+                    <span class="currency">USD</span>
+                    <span class="per-month">/mo</span>
+                </div>
+                <ul class="pricing-features">
+                    <li>Limited downloads</li>
+                    <li>Standard resolution</li>
+                    <li>Basic support</li>
+                </ul>
+                <button class="get-btn" onclick="window.location.href='index.html'">Continue Free</button>  
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-badge">Pro</div>
+                <div class="pricing-main">
+                    <span class="old-price">$12</span>
+                    <span class="new-price">$4</span>
+                    <span class="currency">USD</span>
+                    <span class="per-month">/mo</span>
+                </div>
+                <ul class="pricing-features">
+                    <li>Unlimited downloads</li>
+                    <li>High resolution</li>
+                    <li>Priority support</li>
+                    <li>Ad-free experience</li>
+                </ul>
+                    <button class="get-btn" onclick="alert('Purchase is unavailable at the moment.');">Get Pro</button>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-badge">Team</div>
+                <div class="pricing-main">
+                    <span class="new-price">$10</span>
+                    <span class="currency">USD</span>
+                    <span class="per-month">/mo</span>
+                </div>
+                <ul class="pricing-features">
+                    <li>Everything in Pro</li>
+                    <li>Team management</li>
+                    <li>Collaboration tools</li>
+                    <li>Dedicated support</li>
+                </ul>
+                    <button class="get-btn" onclick="alert('Purchase is unavailable at the moment.');">Get Team</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="main-footer">
+        <div class="container">
+            <p>&copy; Oe Te Aes PhotoStock - Yosep Bima Aprillian.</p>
+        </div>
+</footer>
+
+</body>
+</html>

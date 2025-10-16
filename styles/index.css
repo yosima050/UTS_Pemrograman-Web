@@ -198,6 +198,13 @@ body {
     background-position: center;
 }
 
+@media (min-width: 800px) {
+  .hero-section { background-image: url("images/Hero-1200.jpg"); }
+}
+@media (min-width: 1400px) {
+  .hero-section { background-image: url("images/Hero-2400.jpg"); }
+}
+
 .hero-content {
     max-width: 700px;
     width: 90%;

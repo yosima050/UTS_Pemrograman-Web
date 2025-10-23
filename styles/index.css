@@ -193,16 +193,16 @@ body {
      background-image: linear-gradient(
         rgba(13, 31, 34, 0.6), 
         rgba(13, 31, 34, 0.6)
-    ), url("/images/Hero.jpg");
+    ), url("images/Hero.jpg");
     background-size: cover;
     background-position: center;
 }
 
 @media (min-width: 800px) {
-  .hero-section { background-image: url("images/Hero-1200.jpg"); }
+  .hero-section { background-image: url("images/Hero.jpg"); }
 }
 @media (min-width: 1400px) {
-  .hero-section { background-image: url("images/Hero-2400.jpg"); }
+  .hero-section { background-image: url("images/Hero.jpg"); }
 }
 
 .hero-content {

@@ -1,113 +1,68 @@
 <?php
+session_start();
 require 'db_config.php';
 
 $photos = [];
-
 try {
-    $stmt = $pdo->query("SELECT title, image_url, price FROM photos ORDER BY id ASC");
+    $stmt = $pdo->query("SELECT id, title, image_url, price FROM photos ORDER BY id ASC");
     $photos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 } catch (PDOException $e) {
-    echo "Error: Gagal mengambil data galeri. " . $e->getMessage();
+    echo "Error: Gagal mengambil data galeri. " . htmlspecialchars($e->getMessage());
+    exit;
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeri Foto</title>
-    
-    <style>
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #fff;
-            color: #222;
-            line-height: 1.6;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-            color: #222;
-            margin-bottom: 40px;
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 20px auto;
-        }
-        .photo-item {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.2s ease;
-        }
-        .photo-item:hover {
-            transform: scale(1.03);
-        }
-        .photo-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-        .photo-details {
-            padding: 15px;
-            text-align: left;
-        }
-        .photo-details h3 {
-            font-size: 1.2rem;
-            color: #222;
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-        .photo-details .price {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #007BFF;
-        }
-    </style>
-</head>
-<body>
+<?php include 'header.php'; ?>
 
-    <h1>Galeri Foto Kami</h1>
+<main class="container-fluid py-1 flex-fill">
+  <div class="bg-white rounded shadow-sm p-4 mt-1">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="h3 mb-0 fw-bold text-dark">Galeri Foto</h1>
+      <a class="btn fw-bold text-dark" href="view_cart.php" style="background-color: #C3F73A; border-color: #C3F73A;">
+          <i class="bi bi-cart3 me-2"></i>View Cart
+      </a>
+    </div>
 
-    <div class="gallery-container">
-        
-        <?php
-        if (empty($photos)):
-        ?>
-            <p style="text-align: center; grid-column: 1 / -1;">Tidak ada foto untuk ditampilkan.</p>
-        
-        <?php
-        else:
-            foreach ($photos as $photo):
-        ?>
+    <?php if (isset($_GET['added'])): ?>
+      <div class="alert alert-success">Item berhasil ditambahkan ke cart.</div>
+    <?php endif; ?>
 
-            <div class="photo-item">
-                <img src="<?php echo htmlspecialchars($photo['image_url']); ?>" alt="<?php echo htmlspecialchars($photo['title']); ?>">
-                
-                <div class="photo-details">
-                    <h3><?php echo htmlspecialchars($photo['title']); ?></h3>
-                    
-                    <p class="price">
-                        Rp <?php echo number_format($photo['price'], 0, ',', '.'); ?>
-                    </p>
+    <?php if (empty($photos)): ?>
+      <div class="alert alert-secondary text-center">Tidak ada foto untuk ditampilkan.</div>
+    <?php else: ?>
+      <div class="row g-4">
+        <?php foreach ($photos as $photo): ?>
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="card h-100 shadow-sm">
+              <div class="ratio ratio-4x3">
+                <img
+                  src="<?= htmlspecialchars($photo['image_url']) ?>"
+                  alt="<?= htmlspecialchars($photo['title']) ?>"
+                  class="card-img-top img-fluid"
+                  style="object-fit:cover;"
+                  loading="lazy"
+                >
+              </div>
+
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title mb-1"><?= htmlspecialchars($photo['title']) ?></h5>
+                <p class="text-muted small mb-3">ID <?= (int)$photo['id'] ?></p>
+                <div class="mt-auto d-flex justify-content-between align-items-center">
+                  <div class="fw-bold" style="color: #0D1F22;">Rp <?= number_format($photo['price'], 0, ',', '.') ?></div>
+
+                  <form method="post" action="add_to_cart.php" class="d-flex gap-2 align-items-center m-0">
+                    <input type="hidden" name="photo_id" value="<?= (int)$photo['id'] ?>">
+                    <input type="number" name="quantity" value="1" min="1" class="form-control form-control-sm" style="width:72px;">
+                    <button type="submit" class="btn btn-sm" style="background-color: #C3F73A; border-color: #C3F73A; color: #000;">Add</button>
+                  </form>
                 </div>
+              </div>
             </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    <?php endif; ?>
+  </div>
+</main>
 
-        <?php
-            endforeach;
-        endif;
-        ?>
-
-    </div> </body>
-</html>
+<?php include 'footer.php'; ?>
